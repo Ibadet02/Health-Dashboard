@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { PatientDetail } from "../components/PatientDetail";
 import { AIInsights } from "../components/AIInsights";
@@ -8,6 +8,10 @@ export const PatientDetailPage = () => {
   const { patientId } = useParams<{ patientId: string }>();
 
   const [currentBiomarkers, setCurrentBiomarkers] = useState<Biomarker[]>([]);
+
+  const handleDataUpdate = useCallback((data: Biomarker[]) => {
+    setCurrentBiomarkers(data);
+  }, []);
 
   if (!patientId) return <div>Patient not found.</div>;
 
@@ -19,7 +23,7 @@ export const PatientDetailPage = () => {
 
       <PatientDetail
         patientId={patientId}
-        onDataUpdate={(data) => setCurrentBiomarkers(data)}
+        onDataUpdate={handleDataUpdate}
       />
 
       <div

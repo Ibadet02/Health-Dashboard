@@ -2,12 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "server:build": "tsc",
     "server:build:watch": "tsc --watch",
     "server:dev": "tsx src/mcp/server.ts",
-    "server:inspect": "set DANGEROUSLY_OMIT_AUTH=true && npx @modelcontextprotocol/inspector npm run server:dev"
+    "server:inspect": "set DANGEROUSLY_OMIT_AUTH=true && npx @modelcontextprotocol/inspector npm run server:dev",
+    "server:start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
