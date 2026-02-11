@@ -7,7 +7,7 @@ export interface Patient {
 
 export interface Biomarker {
   id: string;
-  patientId: string;
+  patientId: Patient["id"];
   name: string;
   value: number;
   unit: string;

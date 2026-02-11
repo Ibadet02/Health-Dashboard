@@ -2,17 +2,23 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { PatientDetailPage } from "../pages/PatientDetailPage";
 import { PatientListPage } from "../pages/PatientListPage";
 
+export const ROUTES = {
+  ROOT: "/",
+  PATIENTS: "/patients",
+  DETAILS: "/patients/:patientId",
+};
+
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Navigate to="/patients" replace />,
+    path: ROUTES.ROOT,
+    element: <Navigate to={ROUTES.PATIENTS} replace />,
   },
   {
-    path: "/patients",
+    path: ROUTES.PATIENTS,
     element: <PatientListPage />,
   },
   {
-    path: "/patients/:patientId",
+    path: ROUTES.DETAILS,
     element: <PatientDetailPage />,
   },
 ]);
